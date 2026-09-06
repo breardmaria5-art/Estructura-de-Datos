@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner lector = new Scanner(System.in);
+
+        String patente[] = new String[30];
+        String chofer[] = new String[30];
+        String carga[] = new String[30];
+        String hora[] = new String[30];
+        int cantidadTe = 0;
+        for (int i = 0; i < 30; i++) {
+            System.out.println("ingrese la patente:");
+            patente[i] = lector.nextLine();
+            System.out.print("ingrese el nombre y el apellido:");
+            chofer[i] = lector.nextLine();
+            System.out.println("ingrese el tipo de carga:");
+            carga[i] = lector.nextLine();
+            if (carga[i].equalsIgnoreCase("te")) {
+                cantidadTe++;
+            }
+                System.out.println("ingrese la hora de egreso:");
+                hora[i] =lector.nextLine();
+        }
+        for (int i = 0; i < 30; i++) {
+            System.out.println("patente:" + patente[i]);
+            System.out.println("chofer:" + chofer[i]);
+            System.out.println("carga:" + carga[i]);
+            System.out.println("hora:" + hora[i]);
+        }
+        System.out.println("cantidad de te:" + cantidadTe);
+    }
+}
