@@ -1,0 +1,60 @@
+import java.util.Locale;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner lector = new Scanner(System.in);
+        int dni;
+        int edad;
+        char sexo;
+
+        int total = 0;
+        int varones = 0;
+        int mujeres = 0;
+        int varonesEntre16y65 = 0;
+
+        int mayorEdad = 0;
+        int dniMayor = 0;
+        char sexoMayor = ' ';
+
+        double porcentaje;
+        System.out.println("ingrese el DNI");
+        dni = lector.nextInt();
+        while (dni != 0) {
+            System.out.println("ingrese la edad");
+            edad = lector.nextInt();
+            System.out.println("Ingrese el sexo F/M:");
+            sexo = lector.next().toUpperCase().charAt(0);
+            total++;
+            if (sexo == 'M') {
+                varones++;
+                if (edad >= 16 && edad <= 65) {
+                    varonesEntre16y65++;
+                }
+            } else if (sexo == 'F') {
+                mujeres++;
+            }
+            if (edad > mayorEdad) {
+                mayorEdad = edad;
+                dniMayor = dni;
+                sexoMayor = sexo;
+            }
+
+            System.out.println("ingrese el DNI");
+            dni = lector.nextInt();
+        }
+            if (total > 0) ;
+            System.out.println("total de personas:" + total);
+            System.out.println("cantidad de varones:" + varones);
+            System.out.println("cantidad de mujeres:" + mujeres);
+
+            if (varones > 0) {
+                porcentaje = (varonesEntre16y65 * 100.0) / varones;
+                System.out.println("porcentaje de varones este 16 y 65 años:" + porcentaje + "%");
+            } else {
+                System.out.println("persona con mayor edad:");
+                System.out.println("DNI" + dniMayor);
+                System.out.println("Edad:" + mayorEdad);
+                System.out.println("Sexo" + sexoMayor);
+            }
+        }
+    }
