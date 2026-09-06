@@ -1,0 +1,22 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner lector = new Scanner(System.in);
+      int vehiculo ;
+      int mejorTiempo = 0;
+      double tiempo;
+      double menortiempo = 0;
+      for(int i = 1; i <= 12; i++){
+            System.out.println("ingrese el numero del vehiculo:");
+            vehiculo = lector.nextInt();
+            System.out.println("ingrese el tiempo:");
+            tiempo = lector.nextDouble();
+            if (i == 1 || tiempo < menortiempo){
+                menortiempo = tiempo;
+                mejorTiempo = vehiculo;
+            }
+      }
+        System.out.println("Numero del vehiculo con mejor tiempo es:"+ mejorTiempo);
+        System.out.println("El tiempo fue:" + menortiempo + "segundo");
+    }
+}
