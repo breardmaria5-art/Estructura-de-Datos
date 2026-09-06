@@ -1,0 +1,35 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner lector = new Scanner(System.in);
+        int dni;
+        int servicio;
+        double monto = 0;
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("cliente" + i);
+            System.out.println("ingresec el DNI:");
+            dni = lector.nextInt();
+
+            System.out.println("1-Internert 30MB");
+            System.out.println("2-Internet 50MB");
+            System.out.println("3-Internet 100MB");
+            System.out.println("Ingrese el servicio que eligio:");
+            servicio = lector.nextInt();
+            switch (servicio) {
+                case 1:
+                    monto = 750;
+                    break;
+                case 2:
+                    monto = 1100;
+                    break;
+                case 3:
+                    monto = 1500 - (1500 * 0.05);
+                    break;
+
+            }
+                System.out.println("DNI :" + dni);
+                System.out.println("Servicio:" + servicio);
+                System.out.println("Monto:" + monto);
+            }
+        }
+    }
