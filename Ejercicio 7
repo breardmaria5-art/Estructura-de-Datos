@@ -50,11 +50,12 @@ public class Main {
             if (varones > 0) {
                 porcentaje = (varonesEntre16y65 * 100.0) / varones;
                 System.out.println("porcentaje de varones este 16 y 65 años:" + porcentaje + "%");
-            } else {
+            }
                 System.out.println("persona con mayor edad:");
-                System.out.println("DNI" + dniMayor);
+                System.out.println("DNI:" + dniMayor);
                 System.out.println("Edad:" + mayorEdad);
-                System.out.println("Sexo" + sexoMayor);
+                System.out.println("Sexo:" + sexoMayor);
             }
         }
-    }
+
+
