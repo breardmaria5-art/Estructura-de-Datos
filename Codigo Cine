@@ -1,0 +1,133 @@
+import java.util.Scanner;
+
+public class Main{
+
+    public static void main(String[] args) {
+
+        Scanner leer = new Scanner(System.in);
+
+        boolean[][] asientos = new boolean[10][10];
+        String[][] nombres = new String[10][10];
+        String[][] telefonos = new String[10][10];
+
+        int opcion = 0;
+
+        while (opcion != 4) {
+            System.out.println("1. Ver plano de la sala");
+            System.out.println("2. Reservar asiento");
+            System.out.println("3. Eliminar reserva");
+            System.out.println("4. Salir");
+            System.out.print("Ingrese una opcion: ");
+            opcion = leer.nextInt();
+
+            switch (opcion) {
+
+                case 1:
+                    System.out.println("Plano del cine");
+                    System.out.println("  ");
+
+                    for(int j = 0; j < 10; j++) {
+                        System.out.println((j + 1)+ " ");
+                    }
+                    System.out.println();
+
+                    for (int i =0; i < 10; i++) {
+                        System.out.println((i + 1) + "  ");
+                        for (int j = 0; j < 10; j++){
+                            if (asientos[i][j]) {
+                                System.out.println("X");
+                            } else{
+                                System.out.println("O");
+                            }
+                            }
+                        System.out.println();
+                    }
+                    break;
+                case 2:
+
+                    leer.nextLine();
+
+                    System.out.print("Nombre: ");
+                    String nombre = leer.nextLine();
+
+                    System.out.print("Telefono: ");
+                    String telefono = leer.nextLine();
+
+                    System.out.print("Fila (1-10): ");
+                    int fila = leer.nextInt();
+
+                    System.out.print("Asiento (1-10): ");
+                    int asiento = leer.nextInt();
+                    if (fila >= 1 && fila <= 10 && asiento >= 1 && asiento <= 10) {
+                        fila--;
+                        asiento--;
+                        if (asientos[fila][asiento]) {
+
+                            System.out.println("Ese asiento ya esta reservado.");
+                            System.out.println("Reservado por: " + nombres[fila][asiento]);
+                            System.out.println("Telefono: " + telefonos[fila][asiento]);
+
+                        }else {
+
+                            asientos[fila][asiento] = true;
+                            nombres[fila][asiento] = nombre;
+                            telefonos[fila][asiento] = telefono;
+
+                            System.out.println("Reserva realizada.");
+                        }
+
+                    } else {
+
+                        System.out.println("Ubicacion incorrecta.");
+
+                    }
+
+                    break;
+                case 3:
+
+                    System.out.print("Fila: ");
+                    fila = leer.nextInt();
+
+                    System.out.print("Asiento: ");
+                    asiento = leer.nextInt();
+                    if (fila >= 1 && fila <= 10 && asiento >= 1 && asiento <= 10) {
+
+                        fila--;
+                        asiento--;
+                        if (asientos[fila][asiento]) {
+
+                            asientos[fila][asiento] = false;
+                            nombres[fila][asiento] = "";
+                            telefonos[fila][asiento] = "";
+
+                            System.out.println("Reserva eliminada.");
+
+                        } else {
+
+                            System.out.println("Ese asiento ya estaba libre.");
+
+                        }
+
+                    } else {
+
+                        System.out.println("Ubicacion incorrecta.");
+
+                    }
+
+                    break;
+                case 4:
+
+                    System.out.println("Fin del programa.");
+                    break;
+                default:
+
+                    System.out.println("Opcion invalida.");
+            }
+
+        }
+
+    }
+
+}
+
+
