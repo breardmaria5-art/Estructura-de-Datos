@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Numeros {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> numeros = new ArrayList<>();
+
+        int numero;
+        do {
+            System.out.print("Ingrese un numero (negativo para terminar): ");
+            numero = scanner.nextInt();
+
+            if (numero >= 0) {
+                numeros.add(numero);
+            }
+
+        } while (numero >= 0);
+
+        if (!numeros.isEmpty()) {
+            int mayor = numeros.get(0);
+            int menor = numeros.get(0);
+            int suma = 0;
+
+            for (int n : numeros) {
+                if (n > mayor) {
+                    mayor = n;
+                }
+
+                if (n < menor) {
+                    menor = n;
+                }
+
+                suma = suma + n;
+            }
+
+            double promedio = (double) suma / numeros.size();
+
+            System.out.println("El mayor es: " + mayor);
+            System.out.println("El menor es: " + menor);
+            System.out.println("El promedio es: " + promedio);
+
+            ArrayList<Integer> sinRepetidos = new ArrayList<>();
+
+            for (int n : numeros) {
+                if (!sinRepetidos.contains(n)) {
+                    sinRepetidos.add(n);
+                }
+            }
+
+            numeros = sinRepetidos;
+
+            System.out.println("Lista sin repetidos: " + numeros);
+
+        } else {
+            System.out.println("No se ingresaron numeros.");
+        }
+
+        scanner.close();
+    }
+}
