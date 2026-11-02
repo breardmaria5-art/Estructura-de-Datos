@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Estudiante {
+    String nombre;
+    int edad;
+    double nota;
+
+    public Estudiante(String nombre, int edad, double nota) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.nota = nota;
+    }
+}
+
+class GestionEstudiantes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+
+        System.out.print("Cuantos estudiantes desea ingresar? ");
+        int cantidad = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < cantidad; i++) {
+            System.out.print("Ingrese el nombre: ");
+            String nombre = scanner.nextLine();
+
+            System.out.print("Ingrese la edad: ");
+            int edad = scanner.nextInt();
+
+            System.out.print("Ingrese la nota promedio: ");
+            double nota = scanner.nextDouble();
+            scanner.nextLine();
+
+            Estudiante estudiante = new Estudiante(nombre, edad, nota);
+            estudiantes.add(estudiante);
+        }
+
+        System.out.println("\nEstudiantes con nota mayor a 7:");
+
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.nota > 7) {
+                System.out.println(estudiante.nombre + " - Nota: " + estudiante.nota);
+            }
+        }
+
+        for (int i = 0; i < estudiantes.size(); i++) {
+            if (estudiantes.get(i).nota < 4) {
+                estudiantes.remove(i);
+                i--;
+            }
+        }
+
+        System.out.println("\nLista final de estudiantes:");
+
+        for (Estudiante estudiante : estudiantes) {
+            System.out.println("Nombre: " + estudiante.nombre
+                    + " - Edad: " + estudiante.edad
+                    + " - Nota: " + estudiante.nota);
+        }
+
+        scanner.close();
+    }
+}
